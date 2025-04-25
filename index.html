@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPEN</title>
+    <style>
+        /* 重置样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        div {
+            width: 100vw;
+            height: 100vh;
+            font-size: 100px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 100vh;
+            letter-spacing: 10px;
+        }
+
+        pre {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>OPEN</div>
+    <pre></pre>
+</body>
+
+</html>
+<script>
+    const { search, hash } = window.location
+
+    const urlParams = new URLSearchParams(search)
+
+    const query = (urlParams.get('query') || '').trim()
+
+    const urlMap = {
+        gi: 'https://github.com/',
+        use: 'https://vueuse.org/'
+    }
+
+    if (query) {
+        const url = urlMap[query]
+        if (url) {
+            window.location.href = url
+        }
+    }
+
+
+    const pre = document.querySelector('pre')
+    const content = JSON.stringify(urlMap, null, 4)
+    const regex = /https?:\/\/[^\s]+/g
+
+    pre.innerHTML = content.replace(regex, (match) => {
+        return `<a href="${match}" target="_blank">${match}</a>`
+    })
+
+</script>
