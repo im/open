@@ -69,37 +69,13 @@
 </head>
 
 <body>
-    <div>OPEN</div>
-    <pre></pre>
+
+
+
 </body>
 
 </html>
 <script>
-    const { search, hash } = window.location
 
-    const urlParams = new URLSearchParams(search)
-
-    const query = (urlParams.get('query') || '').trim()
-
-    const urlMap = {
-        gi: 'https://github.com/',
-        use: 'https://vueuse.org/'
-    }
-
-    if (query) {
-        const url = urlMap[query]
-        if (url) {
-            window.location.href = url
-        }
-    }
-
-
-    const pre = document.querySelector('pre')
-    const content = JSON.stringify(urlMap, null, 4)
-    const regex = /https?:\/\/[^\s]+/g
-
-    pre.innerHTML = content.replace(regex, (match) => {
-        return `<a href="${match}" target="_blank">${match}</a>`
-    })
 
 </script>
